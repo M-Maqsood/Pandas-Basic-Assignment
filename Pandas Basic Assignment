@@ -1,0 +1,164 @@
+
+
+Q1. Create a Pandas Series that contains the following data: 4, 8, 15, 16, 23, and 42. Then, print the series.
+
+ Here's the code to create a Pandas Series with the given data and print it:
+import pandas as pd
+
+data = [4, 8, 15, 16, 23, 42]
+series = pd.Series(data)
+print(series)
+0     4
+1     8
+2    15
+3    16
+4    23
+5    42
+dtype: int64
+Q2
+Q2. Create a variable of list type containing 10 elements in it, and apply pandas.Series function on the variable print it.
+
+ Here's an example of how you can create a list with 10 elements and convert it into a Pandas Series:
+import pandas as pd
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+series = pd.Series(my_list)
+print(series)
+0     1
+1     2
+2     3
+3     4
+4     5
+5     6
+6     7
+7     8
+8     9
+9    10
+dtype: int64
+ In this example, the list 'my_list' contains 10 elements, and we pass it as an argument to the 'pd.Series()' function to convert it into a Pandas Series. Finally, we print the resulting series.
+Q3
+Q3. Create a Pandas DataFrame that contains the following data:
+
+Name:
+Alice, Bob, Claire
+
+Age: 25, 30, 27
+
+Gender: Female, Male, Female
+Then, print the DataFrame.
+
+ Here's the code to create a Pandas DataFrame with the given data and print it:
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Claire'],
+    'Age': [25, 30, 27],
+    'Gender': ['Female', 'Male', 'Female']
+}
+
+df = pd.DataFrame(data)
+print(df)
+     Name  Age  Gender
+0   Alice   25  Female
+1     Bob   30    Male
+2  Claire   27  Female
+In this example, we create a dictionary data where the keys represent the column names and the values represent the corresponding data for each column. Then, we pass this dictionary to the pd.'DataFrame()' function to create the DataFrame. Finally, we print the resulting DataFrame.
+Q4
+Q4. What is ‘DataFrame’ in pandas and how is it different from pandas.series? Explain with an example.
+
+In Pandas, a DataFrame is a two-dimensional tabular data structure that consists of rows and columns. It can be thought of as a table or spreadsheet-like data structure where each column represents a variable, and each row represents an observation or record.
+
+A DataFrame is more versatile than a Pandas Series because it can store and manipulate data with multiple dimensions. It allows for efficient handling of structured data and provides a variety of functionalities for data analysis and manipulation.
+
+Here's an example to illustrate the difference between a Pandas Series and a DataFrame:
+import pandas as pd
+
+# Example using a Series
+s = pd.Series([1, 2, 3, 4])
+print(s)
+
+# Example using a DataFrame
+data = {
+    'A': [1, 2, 3, 4],
+    'B': ['a', 'b', 'c', 'd']
+}
+
+df = pd.DataFrame(data)
+print(df)
+0    1
+1    2
+2    3
+3    4
+dtype: int64
+   A  B
+0  1  a
+1  2  b
+2  3  c
+3  4  d
+In this example, we first create a Pandas Series s with four elements. When we print it, we get a one-dimensional structure with indexes and values.
+
+Next, we create a DataFrame df using a dictionary data, where the keys represent the column names ('A' and 'B') and the values represent the corresponding data for each column. When we print the DataFrame, we get a two-dimensional structure with column names and rows, providing a tabular representation of the data.
+Q5
+Q5. What are some common functions you can use to manipulate data in a Pandas DataFrame? Can you give an example of when you might use one of these functions?
+
+Pandas provides a wide range of functions to manipulate data in a DataFrame. Here are some common functions:
+
+1. head() and tail(): Used to view the first or last few rows of a DataFrame, respectively. For example, you might use df.head() to quickly inspect the top records of a large DataFrame.
+
+2. info(): Displays the summary information about the DataFrame, including the column names, data types, and non-null counts. It helps to understand the structure and integrity of the data.
+
+ 3. describe(): Generates descriptive statistics of the DataFrame, such as count, mean, standard deviation, minimum, maximum, and quartile values. It provides insights into the distribution and summary statistics of the numerical columns.
+
+ 4. loc[] and iloc[]: Used for indexing and selecting data from the DataFrame. loc[] is label-based, allowing you to access rows and columns by their labels. iloc[] is integer-based, enabling access by integer positions. For example, you can use df.loc[2:4, 'Age'] to select rows 2 to 4 and the 'Age' column.
+
+ 5. drop(): Removes specified rows or columns from the DataFrame. It is useful for data cleaning and filtering. For instance, you might use df.drop(['column1', 'column2'], axis=1) to remove 'column1' and 'column2' from the DataFrame.
+
+ 6. fillna(): Fills missing values in the DataFrame with a specified value or strategy. It helps handle missing data effectively. For example, you can use df.fillna(0) to replace NaN values with 0.
+
+ 7. groupby(): Groups the DataFrame based on specified columns and allows you to perform aggregations, such as sum, count, mean, etc., on the grouped data. It is useful for data summarization and analysis. For instance, you can use df.groupby('Category')['Revenue'].sum() to calculate the total revenue for each category.
+
+  These are just a few examples of the many functions available in Pandas to manipulate data in a DataFrame. The specific functions you use depend on the requirements of your analysis or data processing tasks.
+Q6
+Q6. Which of the following is mutable in nature Series, DataFrame, Panel?
+
+Among the given options, both Series and DataFrame are mutable in nature, whereas Panel is not.
+
+In Pandas:
+
+ A Series is a one-dimensional array-like object that can hold any data type. It can be modified by assigning new values to its elements or by using various methods provided by Pandas.
+
+ A DataFrame is a two-dimensional tabular data structure consisting of rows and columns. It can be modified by adding or removing rows/columns, updating values, or applying various data manipulation operations.
+
+ A Panel is a three-dimensional data structure that is not commonly used in practice. It is deprecated in recent versions of Pandas and has been replaced by other data structures. Panels were mutable, but they are no longer actively supported.
+
+ Therefore, the correct answer is that Series and DataFrame are mutable in nature.
+Q7
+Q7. Create a DataFrame using multiple Series. Explain with an example.
+
+To create a DataFrame using multiple Series, you can combine the Series objects by specifying them as a dictionary, where each key represents the column name and the value represents the corresponding Series. Here's an example:
+import pandas as pd
+
+# Create Series objects
+name_series = pd.Series(['Alice', 'Bob', 'Claire'])
+age_series = pd.Series([25, 30, 27])
+gender_series = pd.Series(['Female', 'Male', 'Female'])
+
+# Create DataFrame using Series
+data = {
+    'Name': name_series,
+    'Age': age_series,
+    'Gender': gender_series
+}
+
+df = pd.DataFrame(data)
+print(df)
+     Name  Age  Gender
+0   Alice   25  Female
+1     Bob   30    Male
+2  Claire   27  Female
+ In this example, we first create three separate Series objects: name_series, age_series, and gender_series. Each Series represents a column of data.
+
+  Next, we create a dictionary data where the keys are the desired column names ('Name', 'Age', 'Gender') and the values are the corresponding Series objects.
+
+ Finally, we pass the data dictionary to the pd.DataFrame() function to create the DataFrame df which combines the Series into a single DataFrame. The resulting DataFrame has three columns: 'Name', 'Age', and 'Gender', with the values from the respective Series.
+ 
